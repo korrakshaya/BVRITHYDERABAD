@@ -1,0 +1,71 @@
+use mysql;
+show full tables;
+select * from sailors;
+create table fighters(a int, b varchar(10), c int, d int);
+#CREATE CURSOR TO FETCH THE SID FROM THE SAILORS TABLE
+
+create procedure pcursor() begin declare a,temp int;
+declare c1 cursor for select sid from sailors; 
+declare continue handler for not found set temp =1; 
+open c1; set temp = 0; 
+while temp = 0 do fetch c1 into a; 
+if temp =0 then select a; 
+end if; 
+end while; 
+close c1; 
+end;
+
+#TO CAL THE ABOVE CREATED CURSOR
+
+
+
+call pcursor();
+
+#CREATE CURSOR TO FETCH THE SID, SNAME, RATING, AGE FROM THE SAILORS TABLE
+
+
+
+
+create procedure pcursor1()
+begin
+declare a,c,d,temp int;
+declare b varchar(10);
+declare c2 cursor for select sid,sname,rating,age from sailors;
+declare continue handler for not found set temp = 1;
+open c2;
+set temp = 0;
+while temp = 0 do fetch c2 into a,b,c,d;
+if temp = 0 then select a,b,c,d;
+end if;
+end while;
+close c2;
+end;
+
+call pcursor1();
+
+#CREATE CUSRORS TO INSERT VALUES FROM ONE TABLE TO ANOTHER
+
+
+
+ 
+create procedure pcursor2() 
+begin 
+declare a,c,d,temp int; 
+declare b varchar(10); 
+declare c2 cursor for select sid,sname,rating,age from sailors; 
+declare continue handler for not found set temp =1; 
+open c2; 
+set temp = 0; 
+while temp = 0 do fetch c2 into a,b,c,d; 
+insert into fighters values (a,b,c,d); 
+if temp = 0 then select a,b,c,d; 
+end if; 
+end while; 
+close c2; 
+end;
+
+call pcursor2();
+
+
+
+
