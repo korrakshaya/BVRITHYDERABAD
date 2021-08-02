@@ -1,0 +1,9 @@
+execution process
+Create a notepad file named as Table.txt as shown below. save it in any location. you should mention this location in the java program. for example, i have saved it at : e:\RAJU  folder.
+HTNO,STUDENTNAME,PHNO,DEPT
+401,ABC,123456,ECE
+501,DEF,456789,CSE
+201,GHI,789654,EEE
+output
+
+
